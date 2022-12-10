@@ -1,13 +1,15 @@
 require 'pry'
 class Knight
-  attr_accessor :position, :moves
+  attr_accessor :position, :parent
+  attr_reader :moves
 
   MOVESET = [[1, 2], [2, 1], [-1, 2], [-2, 1], [1, -2], [2, -1], [-1, -2], [-2, -1]].freeze
 
   # behaves like a node with infinite children
-  def initialize(position)
+  def initialize(position, parent = nil)
     @position = position
     @moves = possible_moves(position)
+    @parent = parent
   end
 
   def ==(other)
@@ -24,9 +26,5 @@ class Knight
       possible_destinations.push([x, y]) if x.between?(0, 7) && y.between?(0, 7)
     end
     possible_destinations
-  end
-
-  def inspect
-    p @position
   end
 end

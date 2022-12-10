@@ -4,7 +4,6 @@ class GameBoard
   def knight_moves(start, finish)
     # start with a queue and the first Knights Position(push and shift methods)
     node = find_child(start, finish)
-    puts "Shortest path from #{start} to #{finish}"
     x = create_childlist(node)
   end
 
